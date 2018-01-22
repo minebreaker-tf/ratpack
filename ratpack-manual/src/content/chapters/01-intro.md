@@ -1,39 +1,41 @@
-# Introduction
+# はじめに
 
-Ratpack is a set of Java libraries that facilitate fast, efficient, evolvable and well tested HTTP applications.
-It is built on the highly performant and efficient Netty event-driven networking engine.
+Ratpackは高速、効率的、拡張可能かつテスト可能なHTTPアプリケーションを作るためのJavaフレームワークです。
+高パフォーマンスなイベント駆動型ネットワークエンジンであるNetty上に作られています。
 
-Ratpack is purely a runtime.
-There is no installable package and no coupled build tooling (e.g. Rails, Play, Grails).
-To build Ratpack applications, you can use any JVM build tool.
-The Ratpack project provides specific support for [Gradle](http://www.gradle.org) through plugins, but any could be used.
+Ratpackは単なる実行環境です。
+インストール可能なパッケージや、同梱されるビルドツール(Rails、Play、Grailsなど)はありません。
+Ratpackアプリケーションを作るために、お好みのJVMビルドツールを使用できます。
+Ratpackプロジェクトは特に、プラグインを通して[Gradle](http://www.gradle.org)へのサポートを提供していますが、どんなビルドツールでも使用できます。
 
-Ratpack is published as a set of library JARs.
+RatpackはいくつかのJARライブラリーの集まりとして公開されています。
 The `ratpack-core` library is the only strictly required library.
-Others such as `ratpack-groovy`, `ratpack-guice`, `ratpack-jackson`, `ratpack-test` etc. are optional.
+厳密には、`ratpack-core`だけが必要なライブラリーです。
+そのほかのライブラリー`ratpack-groovy`、`ratpack-guice`、`ratpack-jackson`、`ratpack-test`などは任意です。
 
-## Goals
+## 目標
 
-Ratpack's goals are:
+ラットパックの目標は:
   
-1. To be fast, scalable, and efficient
-2. To allow applications to evolve in complexity without compromise
-3. To leverage the benefits of non-blocking programming and reduce the costs
-4. To be flexible and unopinionated when it comes to integrating other tools and libraries
-5. To allow applications to be easily and thoroughly tested
+1. 高速で、スケーラブルで、効率的であること
+2. 複雑になるという犠牲を払うことなく、アプリケーションを発展させられること
+3. 非ブロッキングプログラミングの利点を活用し、欠点を削減すること
+4. 他のツールやライブラリーと統合するとき、柔軟であり非オピオネイテッドであること
+5. アプリケーションが、簡単にかつ完全にテストできるようにすること
  
-Ratpacks's goals are **not**:
+Ratpackの目標は、以下のものでは **ありません** :
 
-1. To be a fully integrated, “full stack” solution
-2. Provide every feature you might need in a neat box
-3. To provide an architecture or framework for “business logic”
+1. 完全に統合された、「フルスタック」なソリューションになること
+2. 必要とされる可能性のある、ありとあらゆる機能を提供すること
+3. 「ビジネスロジック」へのアーキテクチャーやフレームワークを提供すること
 
-## About this documentation
+## このドキュメンテーションについて
 
-The documentation for Ratpack is spread over this manual and the [Javadoc API reference](api/).
-The manual introduces topics and concepts at a high level and links through to the Javadoc for detailed API information.
-The majority of the information is contained within the Javadoc.
-It is expected that once you have an understanding of the core Ratpack concepts, the manual becomes less useful and the Javadoc more useful.
+Ratpackのドキュメンテーションはこのマニュアルと[Javadoc API リファレンス](https://ratpack.io/manual/current/api/index.html)にあります。
+マニュアルは、高レベルでのトピックやコンセプトを紹介し、詳細なAPIに関する情報はJavadocへリンクしています。
+情報の大部分はJavadocの中にあります。
+Ratpackの中心となるコンセプトを理解した後は、マニュアルよりもJavadocのほうが役に立つでしょう。
+(訳注: 日本語のJavadocは未整備です)
 
 ### Code samples
 
@@ -102,7 +104,7 @@ Where `EmbeddedApp` supports creating an entire Ratpack application, `ExecHarnes
 It is typically used to unit test asynchronous code that uses Ratpack constructs like [`Promise`](api/ratpack/exec/Promise.html) (see the [“Asynchronous & Non Blocking”](async.html) chapter for more info on the execution model).
 [`ExecHarness`](api/ratpack/test/exec/ExecHarness.html) is also provided as part of Ratpack's [testing support](testing.html).
 
-#### Java 8 style
+#### Java 8 スタイル
 
-Ratpack is built on, and requires, Java 8. The code samples extensively use Java 8 constructs such as lambda expressions and method references.
-If you are experienced with Java but not the new constructs in Java 8, you may find the examples “exotic”.
+RatpackはJava 8上に作られており、Java 8を必要とします。コード例はのラムダ式やメソッド参照のようなJava 8の機能を沢山使用しています。
+Javaの経験があったとしてもJava 8の文法になじみがなければ、コード例が「奇妙」に感じるかもしれません。
