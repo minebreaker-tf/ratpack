@@ -1,15 +1,15 @@
-# Quick Start
+# クイックスタート
 
-This chapter provides instructions on how to get a Ratpack application up and running to play with.
+この章では、Ratpackアプリケーションをどうやって動かし、使ってみればよいのかを説明します。
 
-## Using a Groovy script
+## Groovyスクリプトの使用
 
-A Ratpack application can be implemented as a single Groovy script.
-This is a useful way to experiment with Ratpack and Groovy.
+Ratpackアプリケーションは単一のGroovyスクリプトとして実装できます。
+これはRatpackとGroovyを体験する便利な方法でしょう。
 
-First, [install Groovy](http://groovy-lang.org/install.html).
+初めに、[Groovyをインストールします](http://groovy-lang.org/install.html)。
 
-Create the file `ratpack.groovy` with the following content:
+以下の内容の`ratpack.groovy`ファイルを作成します。
  
 ```language-groovy hello-world-grab
 @Grapes([
@@ -30,38 +30,38 @@ ratpack {
 }
 ``` 
 
-You can now start the app by running the following on the command line:
+これで、下記のコマンドを入力しアプリケーションを起動できます。
 
 ```language-bash
 groovy ratpack.groovy
 ```
 
-The server will be available via `http://localhost:5050/`.
+サーバーには`http://localhost:5050/`からアクセスできます。
 
-The [`handlers()` method](api/ratpack/groovy/Groovy.Ratpack.html#handlers-groovy.lang.Closure-) takes a closure that delegates to a [`GroovyChain`](api/ratpack/groovy/handling/GroovyChain.html) object.
-The “Groovy Handler Chain DSL” is used to build the response handling strategy.
+[`handlers()` メソッド](https://ratpack.io/manual/current/api/ratpack/groovy/Groovy.Ratpack.html#handlers-groovy.lang.Closure-) は [`GroovyChain`](api/ratpack/groovy/handling/GroovyChain.html) オブジェクトに委譲されるクロージャ―を引数とします。
+「Groovy ハンドラー・チェーン DSL」を使って、レスポンス処理の戦略を組み立てることができます。
 
-Changes to the file are live during development.
-You can edit the file, and the changes will take effect on the next request.
+ファイルへの変更は開発中の間、その場で反映されます。
+ファイルを変更すると、次のリクエストにはその変更が有効になっています。
 
-## Using the Gradle plugin(s)
+## Gradleプラグインを使う
 
-We recommend the use of the [Gradle build system](http:///www.gradle.org) to build Ratpack applications.
-Ratpack does not require Gradle; any build system can be used.
+[Gradleビルドシステム](http:///www.gradle.org)を使ってRatpackアプリケーションをビルドすることが推奨されています。
+Gradleの使用は必須ではありません。どんなビルドシステムでも使うことができます。
 
-> The following instructions assume you have already installed Gradle.
-> See the [Gradle User Guide](https://docs.gradle.org/current/userguide/installation.html) for installation instructions.
+> 以下の説明はGradleがインストールされていることを前提としています。
+> インストールの説明には[Gradle User Guide](https://docs.gradle.org/current/userguide/installation.html)を参照してください。
 
-The Ratpack project provides two Gradle plugins:
+Ratpackプロジェクトは2つのGradleプラグインを提供しています:
 
-1. [io.ratpack.ratpack-java](http://plugins.gradle.org/plugin/io.ratpack.ratpack-java) - for Ratpack applications implemented in Java
-2. [io.ratpack.ratpack-groovy](http://plugins.gradle.org/plugin/io.ratpack.ratpack-groovy)  - for Ratpack applications implemented in [Groovy](http://groovy-lang.org)
+1. [io.ratpack.ratpack-java](http://plugins.gradle.org/plugin/io.ratpack.ratpack-java) - Javaで実装されるRatpackアプリケーション用
+2. [io.ratpack.ratpack-groovy](http://plugins.gradle.org/plugin/io.ratpack.ratpack-groovy)  - [Groovy](http://groovy-lang.org)で実装されるRatpackアプリケーション用
  
-> For a more detailed explanation of the Gradle build support, please see the [dedicated chapter](gradle.html).
+> Gradleビルドのサポートの詳細については、[Gradleの章](gradle.html)を参照してください。
 
-### Using the Gradle Java plugin
+### Gradle Javaプラグインを使う
 
-Create a `build.gradle` file with the following contents:
+次の内容の`build.gradle`ファイルを作成します:
 
 ```language-groovy gradle
 buildscript {
@@ -87,7 +87,7 @@ dependencies {
 mainClassName = "my.app.Main"
 ```
 
-Create the file `src/main/java/my/app/Main.java`, with the following content:
+次の内容の`src/main/java/my/app/Main.java`ファイルを作成します:
 
 ```language-java hello-world
 package my.app;
@@ -106,22 +106,22 @@ public class Main {
 }
 ```
 
-You can now start the application either by executing the `run` task with Gradle (i.e. `gradle run` on the command line),
-or by importing the project into your IDE and executing the `my.app.Main` class.
+これで、Gradleで`run`コマンドを実行するか(すなわち、コマンドラインで`gradle run`を実行)、
+IDEにプロジェクトをインポートして、`my.app.Main`クラスを実行することで、アプリケーションを開始できます。
 
-When run, the server will be available via `http://localhost:5050/`.
+実行すると、サーバーに`http://localhost:5050/`でアクセスできます。
 
-The [`handlers()` method](api/ratpack/server/RatpackServerSpec.html#handlers-ratpack.func.Action-) takes a function that receives a [`Chain`](api/ratpack/handling/Chain.html) object.
-The “Handler Chain API” is used to build the response handling strategy.
+[`handlers()` メソッド](https://ratpack.io/manual/current/api/ratpack/server/RatpackServerSpec.html#handlers-ratpack.func.Action-)は[`Chain`](https://ratpack.io/manual/current/api/ratpack/handling/Chain.html)オブジェクトを受け取る関数を引数にとります。
+「ハンドラー・チェーン API」を、レスポンス処理の戦略を組み立てるために使用できます。
 
-The Ratpack Gradle plugin supports [Gradle's Continuous Build feature](https://docs.gradle.org/current/userguide/continuous_build.html).
-Use it to have changes to your source code be automatically applied to your running application. 
+Ratpack Gradleプラグインは、[Gradleの継続的ビルド機能](https://docs.gradle.org/current/userguide/continuous_build.html)をサポートしています。
+これを使用することで、ソースコードへの変更を自動的に動作しているアプリケーションに適用することができます。
 
-For further information on using Ratpack with Groovy, please see the [Gradle](gradle.html) chapter.
+RatpackとGroovyに関するさらなる情報には、[Gradle](gradle.html)の章を参照してください。
 
-### Using the Gradle Groovy plugin
+### Gradle Groovyプラグインを使う
 
-Create a `build.gradle` file with the following contents:
+次の内容の`build.gradle`ファイルを作成します:
 
 ```language-groovy gradle
 buildscript {
@@ -145,7 +145,7 @@ dependencies {
 }
 ```
 
-Create the file `src/ratpack/ratpack.groovy`, with the following content:
+次の内容の`src/ratpack/ratpack.groovy`ファイルを作成します:
 
 ```language-groovy hello-world
 import static ratpack.groovy.Groovy.ratpack
@@ -162,20 +162,20 @@ ratpack {
 }
 ```
 
-You can now start the application either by executing the `run` task with Gradle (i.e. `gradle run` on the command line),
-or by importing the project into your IDE and executing the [`ratpack.groovy.GroovyRatpackMain`](api/ratpack/groovy/GroovyRatpackMain.html) class.
+これで、Gradleで`run`コマンドを実行するか(すなわち、コマンドラインで`gradle run`を実行)、
+IDEにプロジェクトをインポートして、[`ratpack.groovy.GroovyRatpackMain`](https://ratpack.io/manual/current/api/ratpack/groovy/GroovyRatpackMain.html)クラスを実行することで、アプリケーションを開始できます。
 
-When run, the server will be available via `http://localhost:5050/`.
+実行すると、サーバーに`http://localhost:5050/`でアクセスできます。
 
-The [`handlers()` method](api/ratpack/groovy/Groovy.Ratpack.html#handlers-groovy.lang.Closure-) takes a closure that delegates to a [`GroovyChain`](api/ratpack/groovy/handling/GroovyChain.html) object.
-The “Groovy Handler Chain DSL” is used to build the response handling strategy.
+[`handlers()` メソッド](https://ratpack.io/manual/current/api/ratpack/groovy/Groovy.Ratpack.html#handlers-groovy.lang.Closure-)は、[`GroovyChain`](api/ratpack/groovy/handling/GroovyChain.html)オブジェクトに委譲されるクロージャ―を引数にとります。
+「Groovy ハンドラー・チェーン DSL」を、レスポンス操作の戦略を組み立てるために使用できます。
 
-The Ratpack Gradle plugin supports [Gradle's Continuous Build feature](https://docs.gradle.org/current/userguide/continuous_build.html).
-Use it to have changes to your source code be automatically applied to your running application. 
+Ratpack Gradleプラグインは、[Gradleの継続的ビルド機能](https://docs.gradle.org/current/userguide/continuous_build.html)をサポートしています。
+これを使用することで、ソースコードへの変更を自動的に動作しているアプリケーションに適用することができます。
 
-For further information on using Ratpack with Groovy, please see the [Groovy](groovy.html) chapter.
+RatpackとGroovyに関するさらなる情報には、[Groovy](groovy.html)の章を参照してください。
 
-For further information on using Ratpack with Groovy, please see the [Gradle](gradle.html) chapter.
+RatpackとGroovyに関するさらなる情報には、[Gradle](gradle.html)の章を参照してください。
 
 ## Using Lazybones project templates
 
