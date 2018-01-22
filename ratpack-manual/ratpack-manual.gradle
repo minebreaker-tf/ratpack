@@ -13,12 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-
-import org.gradle.external.javadoc.internal.AbstractJavadocOptionFileOption
-import org.gradle.external.javadoc.internal.JavadocOptionFileWriterContext
-
-import static org.pegdown.Extensions.*
+import static org.pegdown.Extensions.FENCED_CODE_BLOCKS
+import static org.pegdown.Extensions.SMARTYPANTS
 
 description = "The manual for Ratpack (documentation & API reference)"
 
@@ -120,14 +116,14 @@ task api(type: Javadoc) {
   classpath = files()
   destinationDir = file("$buildDir/api")
 
-  apiModules.each {
-    source it.sourceSets.main.java
-    classpath += it.sourceSets.main.compileClasspath + it.sourceSets.main.output
-
-    if (it.hasProperty("apiLinks")) {
-      options.links(* it.apiLinks)
-    }
-  }
+//  apiModules.each {
+//    source it.sourceSets.main.java
+//    classpath += it.sourceSets.main.compileClasspath + it.sourceSets.main.output
+//
+//    if (it.hasProperty("apiLinks")) {
+//      options.links(* it.apiLinks)
+//    }
+//  }
 
   configure(options) {
     splitIndex true
@@ -143,17 +139,17 @@ task api(type: Javadoc) {
       <link rel="stylesheet" type="text/css" href="{@docRoot}/../css/fonts.css">
     """.replaceAll("(^|\\n)\\s*", "")
 
-  options.addOption new AbstractJavadocOptionFileOption<String>("-allow-script-in-comments", null) {
-    @Override
-    void write(JavadocOptionFileWriterContext context) throws IOException {
-      context.writeOption(getOption())
-    }
-
-    @Override
-    AbstractJavadocOptionFileOption<String> duplicate() {
-      this
-    }
-  }
+//  options.addOption new AbstractJavadocOptionFileOption<String>("-allow-script-in-comments", null) {
+//    @Override
+//    void write(JavadocOptionFileWriterContext context) throws IOException {
+//      context.writeOption(getOption())
+//    }
+//
+//    @Override
+//    AbstractJavadocOptionFileOption<String> duplicate() {
+//      this
+//    }
+//  }
   options.bottom = ext.additionalAssets
 
   inputs.property "additionalAssets", ext.additionalAssets
@@ -206,7 +202,7 @@ task tokeniseManual(type: Sync) {
 
   ext.substitutionProperties = [
       title: "Ratpack",
-      tagline: "Simple, lean & powerful HTTP apps",
+      tagline: "シンプル、柔軟、パワフルなHTTPアプリケーション",
       "ratpack-version": project.version,
       "ratpack-group": project.group,
       "groovy-version": commonVersions.groovy,
@@ -224,7 +220,7 @@ task tokeniseManual(type: Sync) {
         <script src="js/all.min.js"></script>
       """,
       footer: """
-        <h2>Ratpack Manual - $version - ${new Date().format("MMMM, yyyy")}</h2>
+        <h2>Ratpack 非公式日本語役 - $version - ${new Date().format("MMMM, yyyy", TimeZone.getTimeZone("Tokyo/Japan"))}</h2>
         <p>
           <a href="http://www.ratpack.io">www.ratpack.io</a><br>
           Licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>
