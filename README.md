@@ -3,21 +3,21 @@
 
 [![Ratpack.io](/ratpack-site/src/assets/images/ratpack-logo.png?raw=true)](https://ratpack.io)
 
-# What is Ratpack?
+## このリポジトリについて
 
-Ratpack is a simple, capable, toolkit for creating high performance web applications.
+このリポジトリは、[Ratpack](https://ratpack.io/)のドキュメンテーションの**非公式**日本語役です。
 
-Ratpack is built on Java and the Netty event-driven networking engine. 
-The API is optimized for Groovy and Java 8.
+まだ成果物のホスティングはありません。
 
-Optional Google Guice integration provides a foundation for scaling your application in size in a managed way.
-
-Optional Gradle build time support makes building and testing applications a breeze.
-
-[http://www.ratpack.io](http://www.ratpack.io)
-
-## Looking to contribute?
-
-Please see [CONTRIBUTING.md](https://github.com/ratpack/ratpack/blob/master/CONTRIBUTING.md)
+やりかけの仕事を見るにはGradleで`openManual`を実行するか、`ratpack-manual/src/content/chapters`を参照してください。
 
 
+## FAQ
+
+#### Q. 訳が酷いです
+A. 頑張ります
+
+
+## About this repo
+
+This repo is the **unofficial** translation of the Ratpack library documentation.
