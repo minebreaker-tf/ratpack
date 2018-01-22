@@ -298,7 +298,7 @@ minifyJs {
 
 task jsAll(type: com.eriwen.gradle.js.tasks.CombineJsTask, dependsOn: minifyJs) {
   source = [
-    "${projectDir}/src/assets/js/googleAnalytics.js",
+//    "${projectDir}/src/assets/js/googleAnalytics.js",
     "${projectDir}/src/assets/js/modernizr.js",
     "${projectDir}/src/assets/js/prism.js",
     "${projectDir}/src/assets/js/jquery.js",
